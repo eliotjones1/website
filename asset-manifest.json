@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/www.eliotkjones.me/static/css/main.6f361193.css",
-    "main.js": "/www.eliotkjones.me/static/js/main.2ab534db.js",
-    "static/media/headshot.jpg": "/www.eliotkjones.me/static/media/headshot.10f76b210b6c02596946.jpg",
-    "index.html": "/www.eliotkjones.me/index.html",
-    "main.6f361193.css.map": "/www.eliotkjones.me/static/css/main.6f361193.css.map",
-    "main.2ab534db.js.map": "/www.eliotkjones.me/static/js/main.2ab534db.js.map"
+    "main.css": "./static/css/main.6f361193.css",
+    "main.js": "./static/js/main.e5e70548.js",
+    "static/media/headshot.jpg": "./static/media/headshot.10f76b210b6c02596946.jpg",
+    "index.html": "./index.html",
+    "main.6f361193.css.map": "./static/css/main.6f361193.css.map",
+    "main.e5e70548.js.map": "./static/js/main.e5e70548.js.map"
   },
   "entrypoints": [
     "static/css/main.6f361193.css",
-    "static/js/main.2ab534db.js"
+    "static/js/main.e5e70548.js"
   ]
 }
