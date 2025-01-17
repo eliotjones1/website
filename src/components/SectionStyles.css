@@ -1,0 +1,78 @@
+/* Global Typography Styles */
+body {
+  font-family: 'Times New Roman', Times, serif; /* Set the default font */
+  line-height: 1.8; /* Comfortable line spacing for readability */
+  font-size: 16px; /* Base font size for body text */
+  color: #333; /* Text color */
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9; /* Optional: Light background for contrast */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Times New Roman', Times, serif; /* Consistent font for headings */
+  font-weight: bold;
+  margin: 1.5rem 0 1rem; /* Add spacing above and below headings */
+  line-height: 1.5; /* Slightly tighter line spacing for headings */
+  color: #222; /* Darker color for headings */
+}
+
+p {
+  font-family: 'Times New Roman', Times, serif; /* Ensure paragraphs use Times New Roman */
+  margin: 1rem 0; /* Add consistent spacing between paragraphs */
+  font-size: 1rem; /* Uniform font size for paragraphs */
+}
+
+ul, ol {
+  font-family: 'Times New Roman', Times, serif; /* Ensure lists use Times New Roman */
+  margin: 1rem 0;
+  padding-left: 1.5rem; /* Indent list items */
+  font-size: 1rem; /* Uniform font size */
+}
+
+a {
+  font-family: 'Times New Roman', Times, serif; /* Ensure links use Times New Roman */
+  color: #000; /* Black links */
+  text-decoration: underline; /* Remove underline by default */
+}
+
+a:hover {
+  color: gray; /* Change color on hover */
+}
+
+.section-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* Wrap text+image in a flex container */
+.about-content {
+  display: flex;
+  /* Keep them side by side */
+  justify-content: space-between;
+  /* Vertically center the image relative to the text */
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Text portion takes more horizontal space */
+.about-text {
+  flex: 2;
+}
+
+/* Image portion takes less space */
+.about-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* center inside its own container */
+}
+
+/* Image scales but no forced height match */
+.about-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
