@@ -55,6 +55,8 @@ function Research() {
         const title = entryTags?.title;
         const authors = entryTags?.author ? highlightAndMarkEqualContribution(entryTags.author, entryTags?.equalcontribution?.split(', ')) : '';
         const year = entryTags?.year;
+        const venue = entryTags?.booktitle;
+        const url = entryTags?.url;
 
         return (
           <div
@@ -74,10 +76,27 @@ function Research() {
               />
             )}
 
-            {/* Year */}
-            {year && (
-              <div style={{ color: '#555', marginTop: '0.4rem' }}>
-                <strong>Year:</strong> {year}
+            {/* Venue and Year */}
+            <div style={{ color: '#555', marginTop: '0.4rem' }}>
+              {venue && <span><strong>Venue:</strong> {venue} </span>}
+              {year && <span><strong>Year:</strong> {year}</span>}
+            </div>
+
+            {/* Preprint Link */}
+            {url && (
+              <div style={{ marginTop: '0.4rem' }}>
+                <a 
+                  href={url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  style={{ 
+                    color: '#007acc',
+                    textDecoration: 'none',
+                    fontSize: '0.95rem'
+                  }}
+                >
+                  [Preprint]
+                </a>
               </div>
             )}
 
