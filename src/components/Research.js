@@ -95,7 +95,7 @@ function Research() {
                     fontSize: '0.95rem'
                   }}
                 >
-                  [Preprint]
+                  [Paper]
                 </a>
               </div>
             )}
