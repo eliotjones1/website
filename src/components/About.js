@@ -9,8 +9,7 @@ function About() {
         <div className="about-text">
           <h2>About Me</h2>
           <p>
-            I am a Research Engineer at Gray Swan AI, based out of Pittsburgh, PA.
-            
+            I am a Research Engineer at Gray Swan AI, based out of Pittsburgh, PA. I co-lead <a href="https://trinity.cs.stanford.edu/">Project Trinity,</a> a multidisciplinary study trying to better measure how good LLMs are at cybersecurity, and the risks involved with advances in AI capabilities.
           </p>
           <p>Some things I've done in the past:</p>
           <ul>

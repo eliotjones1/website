@@ -20,14 +20,25 @@ function Research() {
   const highlightAndMarkEqualContribution = (authors, equalContributors) => {
     if (!authors) return authors;
 
-    const authorList = authors.split(' and '); // BibTeX authors are separated by " and "
+    // First clean up the entire authors string and normalize whitespace
+    const cleanedAuthors = authors.replace(/\s+/g, ' ').trim();
+    
+    // Split by ' and ' but also handle cases where there might be commas
+    const authorList = cleanedAuthors.split(/\s+and\s+/);
+    
     return authorList
       .map((author) => {
-        // Highlight the user's name
-        const highlighted = author === myName ? `<strong>${author}</strong>` : author;
+        // Clean up author name and remove trailing commas
+        const cleanAuthor = author.trim().replace(/,$/, '');
+        
+        // Highlight the user's name (check for multiple variations)
+        const isMyName = cleanAuthor === myName || 
+                        cleanAuthor === "Eliot Krzysztof Jones" || 
+                        cleanAuthor === "Eliot Krzystof Jones"; // Handle misspelling in bib file
+        const highlighted = isMyName ? `<strong>${cleanAuthor}</strong>` : cleanAuthor;
 
         // Add an asterisk if the author is an equal contributor
-        const marked = equalContributors?.includes(author) ? `${highlighted}*` : highlighted;
+        const marked = equalContributors?.includes(cleanAuthor) ? `${highlighted}*` : highlighted;
 
         return marked;
       })
