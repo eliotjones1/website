@@ -54,7 +54,7 @@ function Research() {
           lineHeight: '1.6',
           fontSize: '1.1rem',
         }}>
-          I'm currently interested in the alignment and robustness of robotic foundation models.
+          I'm currently interested in measuring the cybersecurity risks posed by leading AI agents.
           While at PleIAs, my research focus was on improving the safety of large language models through increased scrutiny of pretraining data.
         </p>
       </div>
