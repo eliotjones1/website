@@ -1,35 +1,202 @@
-.App {
-  font-family: "Times New Roman", Times, serif;
-  background-color: #fff;
-  color: #000;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+/* ============================================
+   Fine Line Aesthetic - Global Styles
+   Cream, elegant typography, delicate lines
+   ============================================ */
+
+:root {
+  /* Color Palette */
+  --cream: #FAF8F3;
+  --cream-dark: #F5F1E8;
+  --charcoal: #2C2C2C;
+  --charcoal-light: #4A4A4A;
+  --charcoal-muted: #6B6B6B;
+  --line-color: #D4CFC4;
+  --line-color-light: #E8E4DB;
+  --accent: #8B7355;
+
+  /* Typography */
+  --font-body: "Times New Roman", Times, Georgia, serif;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-script: "Italiana", serif;
+
+  /* Spacing */
+  --section-padding: 6rem 0;
+  --content-max-width: 900px;
 }
 
-/* Smooth scrolling for anchor links */
+/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Main content spacing */
+/* Base styles */
+.App {
+  font-family: var(--font-body);
+  background-color: var(--cream);
+  color: var(--charcoal);
+  min-height: 100vh;
+  line-height: 1.8;
+  position: relative;
+  overflow-x: hidden;
+}
+
+
+/* Main content */
 main {
-  width: 80%;
-  max-width: 1000px;
-  margin: 3rem auto;
+  width: 85%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 2rem 0 4rem;
 }
 
-/* Basic headings style */
+/* Typography */
 h1, h2, h3, h4, h5 {
-  font-weight: normal;
-  margin-bottom: 1rem;
-  letter-spacing: 0.5px;
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--charcoal);
+  letter-spacing: 0.02em;
 }
 
-/* Subtle horizontal lines */
+h1 {
+  font-size: 3.5rem;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 40px;
+  height: 1px;
+  background-color: var(--accent);
+}
+
+h3 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin: 2rem 0 1rem;
+}
+
+p {
+  margin: 1rem 0;
+  font-size: 1.05rem;
+}
+
+/* Links */
+a {
+  color: var(--charcoal);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line-color);
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Elegant divider */
 .section-divider {
   border: none;
-  border-top: 1px solid #ccc;
-  margin: 2rem 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--line-color) 20%,
+    var(--line-color) 80%,
+    transparent
+  );
+  margin: 4rem 0;
   width: 100%;
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes drawLine {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
+
+/* Utility classes for animations */
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-delay-1 { animation-delay: 0.1s; }
+.animate-delay-2 { animation-delay: 0.2s; }
+.animate-delay-3 { animation-delay: 0.3s; }
+.animate-delay-4 { animation-delay: 0.4s; }
+.animate-delay-5 { animation-delay: 0.5s; }
+
+/* Selection styling */
+::selection {
+  background-color: var(--accent);
+  color: var(--cream);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--line-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--charcoal-muted);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  main {
+    width: 90%;
+    padding: 1rem 0 3rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  :root {
+    --section-padding: 4rem 0;
+  }
 }

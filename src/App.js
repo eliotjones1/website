@@ -1,27 +1,39 @@
 import React from 'react';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import NavBar from './components/NavBar';
-import Footer from './components/Footer';
-import About from './components/About';
-import Research from './components/Research';
-import Personal from './components/Personal';
-import Contact from './components/Contact';
+import { PageTransitionProvider } from './components/PageTransition';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import ResearchPage from './pages/ResearchPage';
+import PersonalPage from './pages/PersonalPage';
+import ContactPage from './pages/ContactPage';
 import './App.css';
+
+function AppContent() {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
+  return (
+    <PageTransitionProvider>
+      <div className="App">
+        {!isHomePage && <NavBar />}
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/research" element={<ResearchPage />} />
+          <Route path="/personal" element={<PersonalPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
+      </div>
+    </PageTransitionProvider>
+  );
+}
 
 function App() {
   return (
-    <div className="App">
-      <NavBar />
-
-      {/* Sections */}
-      <main>
-        <About />
-        <Research />
-        <Personal />
-        <Contact />
-      </main>
-
-      <Footer />
-    </div>
+    <Router>
+      <AppContent />
+    </Router>
   );
 }
 

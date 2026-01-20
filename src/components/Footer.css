@@ -1,8 +1,25 @@
+/* ============================================
+   Footer - Fine Line Aesthetic
+   ============================================ */
+
 .footer {
   text-align: center;
-  padding: 1rem 0;
-  margin-top: auto;
-  border-top: 1px solid #ccc;
+  padding: 1.5rem 2rem 2rem;
+  background-color: var(--cream);
+}
+
+.footer-content {
+  font-family: var(--font-display);
+  color: var(--charcoal-muted);
+}
+
+.footer-content p {
+  margin: 0.25rem 0;
   font-size: 0.9rem;
 }
 
+.footer-note {
+  font-style: italic;
+  font-size: 0.85rem !important;
+  opacity: 0.7;
+}

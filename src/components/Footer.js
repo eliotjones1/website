@@ -1,13 +1,16 @@
 import React from 'react';
 import './Footer.css';
+import { BotanicalDivider } from './LineArt';
 
 function Footer() {
   return (
     <footer className="footer">
-      <div>© {new Date().getFullYear()} Eliot Jones. All rights reserved.</div>
+      <BotanicalDivider />
+      <div className="footer-content">
+        <p>© {new Date().getFullYear()} Eliot Jones</p>
+      </div>
     </footer>
   );
 }
 
 export default Footer;
-

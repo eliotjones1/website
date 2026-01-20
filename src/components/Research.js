@@ -1,9 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import bibtexParse from 'bibtex-parse-js';
+import './SectionStyles.css';
 
 function Research() {
   const [references, setReferences] = useState([]);
-  const myName = "Eliot Jones"; // Your name to be bolded
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const isMyName = (author) => {
+    const clean = author.trim().replace(/\s+/g, ' ');
+    return clean.includes('Eliot') && clean.includes('Jones');
+  };
 
   useEffect(() => {
     fetch(`${process.env.PUBLIC_URL}/assets/bibliography/refs.bib`)
@@ -17,112 +23,116 @@ function Research() {
       });
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   const highlightAndMarkEqualContribution = (authors, equalContributors) => {
     if (!authors) return authors;
 
-    // First clean up the entire authors string and normalize whitespace
-    const cleanedAuthors = authors.replace(/\s+/g, ' ').trim();
-    
-    // Split by ' and ' but also handle cases where there might be commas
-    const authorList = cleanedAuthors.split(/\s+and\s+/);
-    
+    // Split on "and" with any surrounding whitespace (including newlines)
+    const authorList = authors.split(/\s+and\s+/i);
     return authorList
       .map((author) => {
-        // Clean up author name and remove trailing commas
-        const cleanAuthor = author.trim().replace(/,$/, '');
-        
-        // Highlight the user's name (check for multiple variations)
-        const isMyName = cleanAuthor === myName || 
-                        cleanAuthor === "Eliot Krzysztof Jones" || 
-                        cleanAuthor === "Eliot Krzystof Jones"; // Handle misspelling in bib file
-        const highlighted = isMyName ? `<strong>${cleanAuthor}</strong>` : cleanAuthor;
-
-        // Add an asterisk if the author is an equal contributor
-        const marked = equalContributors?.includes(cleanAuthor) ? `${highlighted}*` : highlighted;
-
+        const authorClean = author.trim().replace(/\s+/g, ' ');
+        const highlighted = isMyName(authorClean) ? `<strong>${authorClean}</strong>` : authorClean;
+        const marked = equalContributors?.includes(authorClean) ? `${highlighted}*` : highlighted;
         return marked;
       })
-      .join(', '); // Join authors back with commas
+      .join(', ');
   };
 
   return (
-    <div style={{ margin: 'auto', }}>
-      <h2 style={{ marginBottom: '1rem' }}>Research</h2>
-      <div>
-        <p style={{
-          marginBottom: '1.5rem',
-          lineHeight: '1.6',
-          fontSize: '1.1rem',
-        }}>
-          I'm currently interested in measuring the cybersecurity risks posed by leading AI agents.
-          While at PleIAs, my research focus was on improving the safety of large language models through increased scrutiny of pretraining data.
-        </p>
-      </div>
+    <section
+      id="research"
+      ref={sectionRef}
+      className={`section-container ${isVisible ? 'visible' : ''}`}
+    >
+      <h2>Research</h2>
+
+      <p style={{ maxWidth: '700px', marginBottom: '2.5rem' }}>
+        I'm currently interested in measuring the cybersecurity risks posed by leading AI agents.
+        While at PleIAs, my research focus was on improving the safety of large language models
+        through increased scrutiny of pretraining data.
+      </p>
+
       <h3>Publications</h3>
-      {references.length === 0 && <p>Loading references...</p>}
 
-      {references.map((entry, idx) => {
-        const { citationKey, entryTags } = entry;
-        const title = entryTags?.title;
-        const authors = entryTags?.author ? highlightAndMarkEqualContribution(entryTags.author, entryTags?.equalcontribution?.split(', ')) : '';
-        const year = entryTags?.year;
-        const venue = entryTags?.booktitle;
-        const url = entryTags?.url;
+      {references.length === 0 && (
+        <p style={{ color: 'var(--charcoal-muted)', fontStyle: 'italic' }}>
+          Loading publications...
+        </p>
+      )}
 
-        return (
-          <div
-            key={citationKey || idx}
-            style={{ marginBottom: '2rem' }}
-          >
-            {/* Title in bold */}
-            <div style={{ fontWeight: 'bold', fontSize: '1.2rem' }}>
-              {title}
-            </div>
+      <div className="publications-list">
+        {references.map((entry, idx) => {
+          const { citationKey, entryTags } = entry;
+          const title = entryTags?.title;
+          const authors = entryTags?.author
+            ? highlightAndMarkEqualContribution(
+                entryTags.author,
+                entryTags?.equalcontribution?.split(', ')
+              )
+            : '';
+          const year = entryTags?.year;
+          const venue = entryTags?.booktitle;
+          const url = entryTags?.url;
 
-            {/* Authors in italic */}
-            {authors && (
-              <div
-                style={{ fontStyle: 'italic', margin: '0.4rem 0' }}
-                dangerouslySetInnerHTML={{ __html: authors }}
-              />
-            )}
-
-            {/* Venue and Year */}
-            <div style={{ color: '#555', marginTop: '0.4rem' }}>
-              {venue && <span><strong>Venue:</strong> {venue} </span>}
-              {year && <span><strong>Year:</strong> {year}</span>}
-            </div>
-
-            {/* Preprint Link */}
-            {url && (
-              <div style={{ marginTop: '0.4rem' }}>
-                <a 
-                  href={url} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  style={{ 
-                    color: '#007acc',
-                    textDecoration: 'none',
-                    fontSize: '0.95rem'
-                  }}
-                >
-                  [Paper]
-                </a>
+          return (
+            <div
+              key={citationKey || idx}
+              className="publication-card"
+              style={{ animationDelay: `${idx * 0.1}s` }}
+            >
+              <div className="publication-number">
+                {String(idx + 1).padStart(2, '0')}
               </div>
-            )}
+              <div className="publication-content">
+                {url ? (
+                  <a
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="publication-title"
+                  >
+                    {title}
+                  </a>
+                ) : (
+                  <div className="publication-title">{title}</div>
+                )}
 
-          </div>
-        );
-      })}
+                {authors && (
+                  <div
+                    className="publication-authors"
+                    dangerouslySetInnerHTML={{ __html: authors }}
+                  />
+                )}
 
-      <hr style={{
-        border: 'none',
-        borderTop: '1px solid #ccc',
-        margin: '2rem 0',
-      }} />
-    </div>
+                <div className="publication-meta">
+                  {venue && <span className="publication-venue">{venue}</span>}
+                  {year && <span className="publication-year">{year}</span>}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+    </section>
   );
 }
 
 export default Research;
-

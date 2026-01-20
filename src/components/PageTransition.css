@@ -1,0 +1,272 @@
+/* ============================================
+   Page Transition - Line Drawing Animation
+   ============================================ */
+
+.page-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  background-color: var(--cream);
+}
+
+.page-transition-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  animation: overlayFade 2s ease-in-out forwards;
+}
+
+@keyframes overlayFade {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Horizontal transition lines */
+.transition-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.t-line {
+  stroke: var(--line-color);
+  stroke-width: 0.15;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+.page-transition-overlay.active .t-line {
+  animation: drawTransitionLine 1s ease-out forwards;
+}
+
+.page-transition-overlay.active .t-line-1 { animation-delay: 0s; }
+.page-transition-overlay.active .t-line-2 { animation-delay: 0.15s; }
+.page-transition-overlay.active .t-line-3 { animation-delay: 0.3s; }
+.page-transition-overlay.active .t-line-4 { animation-delay: 0.45s; }
+
+@keyframes drawTransitionLine {
+  0% { stroke-dashoffset: 100; }
+  50% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -100; }
+}
+
+/* Center decorative element */
+.transition-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+}
+
+.transition-center svg {
+  width: 100%;
+  height: 100%;
+}
+
+.t-stem {
+  stroke: var(--accent);
+  stroke-width: 1;
+  fill: none;
+  stroke-dasharray: 150;
+  stroke-dashoffset: 150;
+}
+
+.t-leaf {
+  stroke: var(--accent);
+  stroke-width: 0.75;
+  fill: none;
+  stroke-dasharray: 80;
+  stroke-dashoffset: 80;
+}
+
+.t-berry {
+  fill: var(--accent);
+  opacity: 0;
+}
+
+.page-transition-overlay.active .t-stem {
+  animation: drawStem 0.9s ease-out 0.2s forwards;
+}
+
+.page-transition-overlay.active .t-leaf {
+  animation: drawLeaf 0.6s ease-out forwards;
+}
+
+.page-transition-overlay.active .t-leaf-1 { animation-delay: 0.4s; }
+.page-transition-overlay.active .t-leaf-2 { animation-delay: 0.6s; }
+.page-transition-overlay.active .t-leaf-3 { animation-delay: 0.5s; }
+.page-transition-overlay.active .t-leaf-4 { animation-delay: 0.7s; }
+
+.page-transition-overlay.active .t-berry {
+  animation: fadeInBerry 0.4s ease-out forwards;
+}
+
+.page-transition-overlay.active .t-berry-1 { animation-delay: 0.7s; }
+.page-transition-overlay.active .t-berry-2 { animation-delay: 0.8s; }
+.page-transition-overlay.active .t-berry-3 { animation-delay: 0.9s; }
+
+@keyframes drawStem {
+  0% { stroke-dashoffset: 150; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes drawLeaf {
+  0% { stroke-dashoffset: 80; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes fadeInBerry {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Corner flourishes */
+.transition-corner {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+}
+
+.transition-corner-tl { top: 0; left: 0; }
+.transition-corner-tr { top: 0; right: 0; }
+.transition-corner-bl { bottom: 0; left: 0; }
+.transition-corner-br { bottom: 0; right: 0; }
+
+.t-corner-line {
+  stroke: var(--line-color);
+  stroke-width: 0.8;
+  fill: none;
+  stroke-dasharray: 150;
+  stroke-dashoffset: 150;
+}
+
+.page-transition-overlay.active .t-corner-line {
+  animation: drawCorner 0.8s ease-out 0.2s forwards;
+}
+
+@keyframes drawCorner {
+  0% { stroke-dashoffset: 150; }
+  100% { stroke-dashoffset: 0; }
+}
+
+/* Constellation elements */
+.transition-constellation {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 120px;
+  height: 120px;
+}
+
+.transition-constellation-left {
+  left: 15%;
+}
+
+.transition-constellation-right {
+  right: 15%;
+}
+
+.transition-constellation svg {
+  width: 100%;
+  height: 100%;
+}
+
+.t-star {
+  fill: var(--accent);
+  opacity: 0;
+}
+
+.t-constellation-line {
+  stroke: var(--line-color);
+  stroke-width: 0.5;
+  fill: none;
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+}
+
+.t-orbit {
+  stroke: var(--line-color);
+  stroke-width: 0.3;
+  fill: none;
+  opacity: 0;
+}
+
+.page-transition-overlay.active .t-star {
+  animation: fadeInStar 0.4s ease-out forwards;
+}
+
+.page-transition-overlay.active .t-star-1 { animation-delay: 0.3s; }
+.page-transition-overlay.active .t-star-2 { animation-delay: 0.45s; }
+.page-transition-overlay.active .t-star-3 { animation-delay: 0.6s; }
+.page-transition-overlay.active .t-star-4 { animation-delay: 0.75s; }
+.page-transition-overlay.active .t-star-5 { animation-delay: 0.9s; }
+
+.page-transition-overlay.active .t-constellation-line {
+  animation: drawConstellation 0.8s ease-out forwards;
+}
+
+.page-transition-overlay.active .t-const-1 { animation-delay: 0.4s; }
+.page-transition-overlay.active .t-const-2 { animation-delay: 0.6s; }
+
+.page-transition-overlay.active .t-orbit {
+  animation: fadeInOrbit 0.6s ease-out 0.5s forwards;
+}
+
+@keyframes fadeInStar {
+  0% { opacity: 0; transform: scale(0); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes drawConstellation {
+  0% { stroke-dashoffset: 200; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes fadeInOrbit {
+  0% { opacity: 0; }
+  100% { opacity: 0.5; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .transition-center {
+    width: 100px;
+    height: 100px;
+  }
+
+  .transition-corner {
+    width: 100px;
+    height: 100px;
+  }
+
+  .transition-constellation {
+    width: 80px;
+    height: 80px;
+  }
+
+  .transition-constellation-left {
+    left: 5%;
+  }
+
+  .transition-constellation-right {
+    right: 5%;
+  }
+}
+
+@media (max-width: 480px) {
+  .transition-constellation {
+    display: none;
+  }
+}

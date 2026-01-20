@@ -1,78 +1,338 @@
-/* Global Typography Styles */
-body {
-  font-family: 'Times New Roman', Times, serif; /* Set the default font */
-  line-height: 1.8; /* Comfortable line spacing for readability */
-  font-size: 16px; /* Base font size for body text */
-  color: #333; /* Text color */
-  margin: 0;
-  padding: 0;
-  background-color: #f9f9f9; /* Optional: Light background for contrast */
-}
+/* ============================================
+   Section Styles - Fine Line Aesthetic
+   ============================================ */
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Times New Roman', Times, serif; /* Consistent font for headings */
-  font-weight: bold;
-  margin: 1.5rem 0 1rem; /* Add spacing above and below headings */
-  line-height: 1.5; /* Slightly tighter line spacing for headings */
-  color: #222; /* Darker color for headings */
-}
-
-p {
-  font-family: 'Times New Roman', Times, serif; /* Ensure paragraphs use Times New Roman */
-  margin: 1rem 0; /* Add consistent spacing between paragraphs */
-  font-size: 1rem; /* Uniform font size for paragraphs */
-}
-
-ul, ol {
-  font-family: 'Times New Roman', Times, serif; /* Ensure lists use Times New Roman */
-  margin: 1rem 0;
-  padding-left: 1.5rem; /* Indent list items */
-  font-size: 1rem; /* Uniform font size */
-}
-
-a {
-  font-family: 'Times New Roman', Times, serif; /* Ensure links use Times New Roman */
-  color: #000; /* Black links */
-  text-decoration: underline; /* Remove underline by default */
-}
-
-a:hover {
-  color: gray; /* Change color on hover */
-}
-
+/* Base section container */
 .section-container {
-  max-width: 1000px;
+  max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 2rem 0;
+  padding: 6rem 0 2rem;
+  position: relative;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-/* Wrap text+image in a flex container */
+.section-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* About section layout */
 .about-content {
   display: flex;
-  /* Keep them side by side */
   justify-content: space-between;
-  /* Vertically center the image relative to the text */
-  align-items: center;
-  gap: 2rem;
+  align-items: flex-start;
+  gap: 4rem;
 }
 
-/* Text portion takes more horizontal space */
 .about-text {
-  flex: 2;
+  flex: 1.5;
 }
 
-/* Image portion takes less space */
+.about-text p {
+  color: var(--charcoal-light);
+  margin-bottom: 1.25rem;
+}
+
+.about-text ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.about-text li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--charcoal-light);
+}
+
+.about-text li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+}
+
+.about-text li strong {
+  color: var(--charcoal);
+  font-weight: 500;
+}
+
+/* About image */
 .about-image {
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: center; /* center inside its own container */
+  align-items: flex-start;
+  position: relative;
 }
 
-/* Image scales but no forced height match */
+.about-image::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--line-color);
+  z-index: -1;
+  transition: transform 0.3s ease;
+}
+
+.about-image:hover::before {
+  transform: translate(5px, 5px);
+}
+
 .about-image img {
   max-width: 100%;
   height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  filter: grayscale(20%);
+  transition: filter 0.3s ease;
+}
+
+.about-image:hover img {
+  filter: grayscale(0%);
+}
+
+/* Research/Publications styles */
+.publications-list {
+  margin-top: 1rem;
+}
+
+.publication-card {
+  display: flex;
+  gap: 1.5rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--line-color-light);
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.publication-card:last-child {
+  border-bottom: none;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.publication-number {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  padding-top: 0.25rem;
+  min-width: 2rem;
+  opacity: 0.7;
+}
+
+.publication-content {
+  flex: 1;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.publication-content::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 1px;
+  height: 1.5rem;
+  background-color: var(--line-color);
+  transition: height 0.3s ease, background-color 0.3s ease;
+}
+
+.publication-card:hover .publication-content::before {
+  height: calc(100% - 1rem);
+  background-color: var(--accent);
+}
+
+.publication-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+a.publication-title {
+  border: none;
+}
+
+a.publication-title:hover {
+  color: var(--accent);
+  border: none;
+}
+
+.publication-authors {
+  font-style: italic;
+  color: var(--charcoal-muted);
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.publication-meta {
+  font-size: 0.9rem;
+  color: var(--charcoal-muted);
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.publication-venue {
+  font-style: italic;
+}
+
+.publication-year {
+  opacity: 0.7;
+}
+
+.publication-year::before {
+  content: '·';
+  margin-right: 1rem;
+  opacity: 0.5;
+}
+
+
+/* Personal section */
+.personal-story {
+  max-width: 700px;
+  margin-bottom: 2rem;
+}
+
+.personal-story p {
+  color: var(--charcoal-light);
+  font-size: 1.05rem;
+}
+
+.interests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.interest-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, var(--cream-dark) 0%, var(--cream) 100%);
+  border: 1px solid var(--line-color-light);
+  border-radius: 2px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.interest-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.interest-icon {
+  color: var(--accent);
+  opacity: 0.8;
+}
+
+.interest-text {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--charcoal);
+}
+
+/* Contact section */
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-intro {
+  max-width: 600px;
+  color: var(--charcoal-light);
+  margin-bottom: 1rem;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.05rem;
+}
+
+.contact-item strong {
+  font-weight: 500;
+  color: var(--charcoal);
+  min-width: 80px;
+}
+
+.contact-item a {
+  color: var(--charcoal-light);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-content {
+    flex-direction: column-reverse;
+    gap: 2rem;
+  }
+
+  .about-image {
+    max-width: 250px;
+    margin: 0 auto;
+  }
+
+  .about-image::before {
+    display: none;
+  }
+
+  .interests-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .publication-card {
+    gap: 1rem;
+  }
+
+  .publication-number {
+    min-width: 1.5rem;
+    font-size: 0.8rem;
+  }
+
+  .publication-content {
+    padding-left: 1rem;
+  }
+
+  .publication-content::before {
+    display: none;
+  }
+
+  .publication-title {
+    font-size: 1.1rem;
+  }
 }
