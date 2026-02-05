@@ -33,27 +33,23 @@ function About() {
       <div className="about-content">
         <div className="about-text">
           <p>
-            I am currently the Head of Offensive Security at <a href="https://grayswan.ai" target="_blank" rel="noopener noreferrer">Gray Swan AI</a>, based out of San Francisco, California.
-            I co-lead <a href="https://trinity.cs.stanford.edu/" target="_blank" rel="noopener noreferrer">Project Trinity</a>, a multidisciplinary study measuring how capable LLMs are at cybersecurity, and the risks involved with advances in AI capabilities.
+            I'm currently working on something new and exciting. I'm based out of San Francisco, CA. 
           </p>
 
           <p>Some things I've done in the past:</p>
 
           <ul>
             <li>
+              <strong>Past Work</strong> — I am formerly the Head of Offensive Security at <a href="https://grayswan.ai" target="_blank" rel="noopener noreferrer">Gray Swan AI</a>. Before that, I led safe synthetic data curation for the PleIAs family of <a href="https://huggingface.co/collections/PleIAs/common-models-674cd0667951ab7c4ef84cc4" target="_blank" rel="noopener noreferrer">models</a>, an open-source, open-data, multilingual family of large language models.
+            </li>
+            <li>
               <strong>Press</strong> — My work has been featured in <a href="https://www.businessinsider.com/ai-agent-hacker-stanford-study-outperform-human-artemis-2025-12" target="_blank" rel="noopener noreferrer">Business Insider</a> and the <a href="https://www.wsj.com/tech/ai/ai-hackers-are-coming-dangerously-close-to-beating-humans-4afc3ad6" target="_blank" rel="noopener noreferrer">Wall Street Journal</a>.
             </li>
             <li>
-              <strong>Advising</strong> — I advised the creation of the UChicago XLab AI Security <a href="https://xlabaisecurity.com/" target="_blank" rel="noopener noreferrer">course</a>, an introduction to the field of AI security.
+              <strong>Advising</strong> — I advised the creation of the UChicago XLab AI Security <a href="https://xlabaisecurity.com/" target="_blank" rel="noopener noreferrer">course</a>, an introduction to the field of AI security. I also co-led <a href="https://trinity.cs.stanford.edu/" target="_blank" rel="noopener noreferrer">Project Trinity</a>, a multidisciplinary study measuring how capable LLMs are at cybersecurity, and the risks involved with advances in AI capabilities. 
             </li>
             <li>
-              <strong>Cyber Evals</strong> — Developed challenges for the <a href="https://www.aisi.gov.uk/blog/pre-deployment-evaluation-of-anthropics-upgraded-claude-3-5-sonnet" target="_blank" rel="noopener noreferrer">UK AISI</a>'s private cybersecurity evaluation set, used for pre-deployment testing of frontier models.
-            </li>
-            <li>
-              <strong>Large Language Models</strong> — Led the synthetic data curation effort for the PleIAs family of <a href="https://huggingface.co/collections/PleIAs/common-models-674cd0667951ab7c4ef84cc4" target="_blank" rel="noopener noreferrer">models</a>, an open-source, open-data, multilingual family of large language models.
-            </li>
-            <li>
-              <strong>Cybench</strong> — Core contributor to <a href="https://cybench.github.io/" target="_blank" rel="noopener noreferrer">Cybench</a>, a benchmark for evaluating the cybersecurity abilities of large language models.
+              <strong>Cyber Evals</strong> — Developed challenges for the <a href="https://www.aisi.gov.uk/blog/pre-deployment-evaluation-of-anthropics-upgraded-claude-3-5-sonnet" target="_blank" rel="noopener noreferrer">UK AISI</a>'s private cybersecurity evaluation set, used for pre-deployment testing of frontier models. I was also a core contributor to <a href="https://cybench.github.io/" target="_blank" rel="noopener noreferrer">Cybench</a>, the most widely-adopted benchmark for evaluating the cybersecurity abilities of large language models.
             </li>
           </ul>
 

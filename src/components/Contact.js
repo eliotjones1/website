@@ -38,11 +38,6 @@ function Contact() {
 
         <div className="contact-links">
           <div className="contact-item">
-            <strong>Email</strong>
-            <span>eliot [at] grayswan [dot] ai</span>
-          </div>
-
-          <div className="contact-item">
             <strong>LinkedIn</strong>
             <a href="https://www.linkedin.com/in/eliot-krzysztof-jones" target="_blank" rel="noopener noreferrer">
               linkedin.com/in/eliot-krzysztof-jones
