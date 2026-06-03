@@ -88,7 +88,7 @@ function Research() {
               )
             : '';
           const year = entryTags?.year;
-          const venue = entryTags?.booktitle;
+          const venue = entryTags?.booktitle || entryTags?.journal;
           const url = entryTags?.url;
 
           return (
