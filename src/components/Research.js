@@ -64,9 +64,9 @@ function Research() {
       <h2>Research</h2>
 
       <p style={{ maxWidth: '700px', marginBottom: '2.5rem' }}>
-        I'm currently interested in measuring the cybersecurity risks posed by leading AI agents.
-        While at PleIAs, my research focus was on improving the safety of large language models
-        through increased scrutiny of pretraining data.
+        My research has focused on measuring the cybersecurity risks posed by AI agents,
+        evaluating the alignment and robustness of LLMs, safety in AI-powered robotics, and
+        curating safety data for LLM pretraining.
       </p>
 
       <h3>Publications</h3>

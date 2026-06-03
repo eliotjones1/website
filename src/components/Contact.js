@@ -38,6 +38,11 @@ function Contact() {
 
         <div className="contact-links">
           <div className="contact-item">
+            <strong>Email</strong>
+            <span>eliot [dot] jones [at] hark.com</span>
+          </div>
+
+          <div className="contact-item">
             <strong>LinkedIn</strong>
             <a href="https://www.linkedin.com/in/eliot-krzysztof-jones" target="_blank" rel="noopener noreferrer">
               linkedin.com/in/eliot-krzysztof-jones

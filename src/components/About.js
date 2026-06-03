@@ -33,7 +33,7 @@ function About() {
       <div className="about-content">
         <div className="about-text">
           <p>
-            I'm currently working on something new and exciting. I'm based out of San Francisco, CA. 
+            I lead Safety at <a href="https://hark.com/" target="_blank" rel="noopener noreferrer">Hark Labs</a>. Our goal is to build the most advanced personal intelligence in the world. My goal is to make it safe.
           </p>
 
           <p>Some things I've done in the past:</p>
