@@ -191,8 +191,8 @@ function Hero() {
           </svg>
         </div>
         <p className="hero-tagline">
-          Building
-          <span className="highlight"> safer AI agents</span>
+          Safety at
+          <span className="highlight"> Thinking Machines Lab</span>
         </p>
 
       </div>
