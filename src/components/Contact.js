@@ -39,7 +39,7 @@ function Contact() {
         <div className="contact-links">
           <div className="contact-item">
             <strong>Email</strong>
-            <span>eliot [dot] jones [at] hark.com</span>
+            <span>eliot [at] thinkingmachines [dot] ai</span>
           </div>
 
           <div className="contact-item">
